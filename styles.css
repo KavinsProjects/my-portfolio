@@ -1,0 +1,293 @@
+  /* General Body and Font Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        #background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://4kwallpapers.com/images/walls/thumbs_2t/3797.jpg'); /* New background image */
+            background-size: cover;
+            background-position: center;
+            filter: blur(6px);
+            transform: scale(1.05); /* Prevents hard edges from blur */
+            z-index: 0;
+        }
+        
+        /* Background Text */
+        #background-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.04);
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+            text-transform: uppercase;
+        }
+
+        /* Top Menu Bar */
+        #top-menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(17, 24, 39, 0.8); /* gray-900 */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #374151; /* gray-700 */
+        }
+
+        /* Base Window Styles (shared across mobile/desktop) */
+        .page-window {
+            min-width: 320px;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid #374151;
+            background-color: rgba(31, 41, 55, 0.6); /* Glassmorphism effect */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            transition: box-shadow 0.2s ease-in-out, border-color 0.3s ease, opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        .window-header {
+            padding: 0.5rem 0.75rem;
+            background-color: #374151;
+            border-bottom: 1px solid #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* New */
+            font-weight: 500;
+            flex-shrink: 0; /* New */
+        }
+       
+        .window-header:active {
+            cursor: grabbing;
+        }
+        
+        /* Window Controls (traffic lights) */
+        .window-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .control-btn.close { background-color: #ff5f56; }
+        .control-btn.min { background-color: #ffbd2e; }
+        .control-btn.max { background-color: #27c93f; }
+
+        .window-title {
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* New Header Icons */
+        .window-header-left, .window-header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .window-header-icons {
+            display: none; /* Hidden on mobile */
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .window-header-icons svg {
+            width: 18px;
+            height: 18px;
+            color: #9ca3af; /* gray-400 */
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .window-header-icons svg:hover {
+            color: #e5e7eb; /* gray-200 */
+        }
+
+
+        .window-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Dock Styles */
+        #dock {
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 0.5rem;
+            background-color: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid #374151;
+            display: flex;
+            gap: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .dock-item {
+            width: 56px;
+            height: 56px;
+            border-radius: 0.75rem;
+            background-color: #374151;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+      
+        .dock-item:hover {
+            transform: translateY(-8px) scale(1.1);
+            background-color: #4b5563;
+        }
+        
+        /* --- DESKTOP ICONS --- */
+        #desktop-icons {
+            position: fixed;
+            top: calc(3.5rem + 20px); /* 3.5rem is menu bar height */
+            left: 20px;
+            display: none; /* Hidden on mobile */
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 500;
+        }
+
+        .desktop-icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            text-align: center;
+            width: 80px;
+            text-decoration: none;
+        }
+        
+        .desktop-icon-btn img, .desktop-icon-btn svg {
+            transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+        }
+
+        .desktop-icon-btn:hover img, .desktop-icon-btn:hover svg {
+             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+             transform: scale(1.05);
+        }
+
+        /* --- RESPONSIVE STYLES --- */
+
+        /* Mobile First: Default Styles (up to 768px) */
+        body { 
+            overflow: auto; 
+        }
+
+        #top-menu-bar, #dock { 
+            display: none; 
+        }
+        
+        #main-content { 
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .page-window {
+            position: relative;
+            width: 100%;
+            height: auto;
+            resize: none;
+            top: auto;
+            left: auto;
+        }
+
+        .window-header { 
+            cursor: default; 
+        }
+
+        .window-title { 
+            text-align: left; 
+            padding-left: 1rem;
+            flex-grow: 0;
+        }
+        
+        .window-controls { 
+            display: none; 
+        }
+        
+        /* Desktop Styles (769px and up) */
+        @media (min-width: 769px) {
+            body { 
+                overflow: hidden; 
+            }
+
+            #top-menu-bar, #dock, #desktop-icons {
+                display: flex;
+            }
+            
+            .window-header-icons {
+                display: flex;
+            }
+
+            #main-content {
+                height: 100vh;
+                width: 100vw;
+                padding: 5rem 2rem 2rem 2rem;
+                position: relative;
+                display: block;
+            }
+
+            .page-window {
+                position: absolute;
+                resize: both;
+            }
+
+            .window-header { 
+                cursor: grab; 
+            }
+
+            .window-title { 
+                text-align: center;
+                padding-left: 0;
+                flex-grow: 1;
+            }
+        
+            .window-controls { 
+                display: flex; 
+            }
+            
+            /* Set initial positions for desktop */
+            #home { width: 55%; max-width: 750px; top: 20%; left: 22.5%; }
+            #about { width: 50%; max-width: 650px; top: 10%; left: 2%; }
+            #contact { width: 45%; max-width: 600px; top: 40%; left: 53%; }
+            #projects { width: 65%; max-width: 850px; top: 55%; left: 8%; }
+        }
