@@ -9,7 +9,6 @@
                 if (!locationTimeEl) return;
 
                 const location = "Coimbatore, Tamilnadu, India";
-
                 const dateOptions = {
                     timeZone: 'Asia/Kolkata',
                     weekday: 'long',
